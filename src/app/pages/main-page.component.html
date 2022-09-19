@@ -1,0 +1,47 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <!-- ============================================================== -->
+    <!-- Page wrapper y  container-fluid es propio del template-->
+    <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="container-fluid">
+
+                <app-breadcrumbs></app-breadcrumbs>
+
+                <!-- Aqui va mi sistema de ruta de las paginas -->
+                <!-- Ejemplo -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                
+                                <router-outlet></router-outlet>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- Referencia al SideBar2 de los estilos que esta a la derecha o menu aternativo  -->
+                <!-- ============================================================== -->
+                <app-sidebar2></app-sidebar2>
+
+            </div>
+
+
+             <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2022 Carlos Alberto Pullas
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+</div>
