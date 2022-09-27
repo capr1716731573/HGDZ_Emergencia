@@ -11,6 +11,8 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { MainPageComponent } from './main-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { CustomComponentsModule } from '../custom-components/custom-components.module';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -21,6 +23,8 @@ import { CustomComponentsModule } from '../custom-components/custom-components.m
     ProgressComponent,
     Grafica1Component,
     MainPageComponent,
+    PromesasComponent,
+    RxjsComponent,
   ],
   imports: [
     CommonModule,  

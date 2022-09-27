@@ -80,9 +80,9 @@ $(function() {
     }).trigger('blur');
 
     // ============================================================== 
-    // Auto select left navbar
+    // Auto select left navbar (No utilizo eso xq yo hare por angular)
     // ============================================================== 
-    $(function() {
+   /*  $(function() {
         var url = window.location;
         var element = $('ul#sidebarnav a').filter(function() {
             return this.href == url;
@@ -95,7 +95,7 @@ $(function() {
             }
         }
 
-    });
+    }); */
     // ============================================================== 
     //tooltip
     // ============================================================== 
