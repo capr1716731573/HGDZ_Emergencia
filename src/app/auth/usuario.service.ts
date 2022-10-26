@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Usuario } from '../models/usuario.model';
 import { RegisterForm } from './register/register-interface';
 
 const baseUrl= environment.base_url
@@ -12,8 +13,18 @@ const baseUrl= environment.base_url
 })
 export class UsuarioService {
 
+  public usuario!:Usuario;
+
   constructor(private http:HttpClient,
               private router:Router) { }
+
+  getToken(){
+    return localStorage.getItem('token') || '';
+  }
+
+  getUid(){
+    return this.usuario.uid || '';
+  }
 
   crearUsuario(formData:RegisterForm){
     return this.http.post(`${baseUrl}/usuarios`,formData)
@@ -37,18 +48,19 @@ export class UsuarioService {
 
   validarToken(){
     //Valida el token 
-    const token= localStorage.getItem('token') || '';
     return this.http.get(`${baseUrl}/login/renew`,{
       headers:{
-        'x-token':token
+        'x-token':this.getToken()
       }
     }).pipe(
-      tap((resp:any) =>{
+      map((resp:any) =>{
+        //cargo informacion del usuario
+        const {email,google,nombre,role,uid,img=''}=resp.usuario;
+        this.usuario=new Usuario(nombre,email,'',img,google,role,uid);
         //guardo nueva version del token
         localStorage.setItem('token',resp.token);
-
+        return true;
       }),
-      map(resp => true),
       catchError(error => of(false))
     )
   }
@@ -56,6 +68,19 @@ export class UsuarioService {
   logout(){
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
+  }
+
+  actualizarPerfil(data:{email:string, nombre:string, role?:string}){
+    data={
+      ...data,
+      role: this.usuario.role
+    };
+    return this.http.put(`${baseUrl}/usuarios/${this.usuario.uid}`,data,{
+      headers:{
+        'x-token':this.getToken()
+      }
+    })
+    
   }
 
 }

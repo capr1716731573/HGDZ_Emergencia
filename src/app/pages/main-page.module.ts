@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CustomComponentsModule } from '../custom-components/custom-components.module';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -25,6 +26,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     MainPageComponent,
     PromesasComponent,
     RxjsComponent,
+    PerfilComponent,
   ],
   imports: [
     CommonModule,  
@@ -32,6 +34,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     SharedModule,//modulo de los header sidebar breadcrumbs
     RouterModule,//si la pagina o main lleva un router outlet se debe colocar este modulo
     CustomComponentsModule,
+    ReactiveFormsModule
     
   ],
   exports:[

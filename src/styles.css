@@ -18,3 +18,9 @@
     justify-content: center;
     text-align: center;
 }
+
+.img-avatar{
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }

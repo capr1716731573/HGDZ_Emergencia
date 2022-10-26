@@ -7,6 +7,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { MainPageComponent } from './main-page.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes:Routes=[
     {
@@ -19,6 +20,7 @@ const routes:Routes=[
         { path: 'grafica', component: Grafica1Component, data:{ titulo:'Gráficos' } },
         { path: 'promesas', component: PromesasComponent, data:{ titulo:'Promesas' } },
         { path: 'rxjs', component: RxjsComponent, data:{ titulo:'Observables' } },
+        { path: 'perfil', component: PerfilComponent, data:{ titulo:'Perfil Usuario' } },
         { path:'', redirectTo:'/dashboard', pathMatch:'full' }
       ]
 
