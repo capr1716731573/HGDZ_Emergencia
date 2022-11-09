@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, map, of, tap } from 'rxjs';
+import { catchError, delay, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario.model';
 import { RegisterForm } from './register/register-interface';
@@ -24,6 +24,14 @@ export class UsuarioService {
 
   getUid(){
     return this.usuario.uid || '';
+  }
+
+  getHeader(){
+    return {
+        headers:{
+        'x-token':this.getToken()
+      }
+    }
   }
 
   crearUsuario(formData:RegisterForm){
@@ -73,14 +81,39 @@ export class UsuarioService {
   actualizarPerfil(data:{email:string, nombre:string, role?:string}){
     data={
       ...data,
-      role: this.usuario.role
-    };
-    return this.http.put(`${baseUrl}/usuarios/${this.usuario.uid}`,data,{
-      headers:{
-        'x-token':this.getToken()
-      }
-    })
+      role:this.usuario.role
+    }
+  
+    return this.http.put(`${baseUrl}/usuarios/${this.usuario.uid}`,data,this.getHeader())
     
+  }
+
+  cargarUsuarios(desde:number=0){
+    const url=`${baseUrl}/usuarios?desde=${desde}`;
+    return this.http.get(url,this.getHeader())
+            .pipe(
+                //delay(1000), para probar el loading y que se demore la carga
+                map((resp:any) =>{
+                  const usuarios=resp.usuarios.map((user:any) => new Usuario(
+                    user.nombre,user.email,'',user.img,user.google,user.role,user.uid
+                  ));
+
+                  return {
+                    total:resp.registros,
+                    usuarios
+                  }
+                })
+            )
+  }
+
+  eliminarUsuario(usuario:Usuario){
+    const url=`${baseUrl}/usuarios/${usuario.uid}`;
+    return this.http.delete(url,this.getHeader());
+  }
+
+  actualizarUsuario(usuario:Usuario){
+    const url=`${baseUrl}/usuarios/${usuario.uid}`;
+    return this.http.put(url,usuario,this.getHeader());
   }
 
 }

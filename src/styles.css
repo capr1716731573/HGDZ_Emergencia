@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~@ng-select/ng-select/themes/default.theme.css";
 .fast{
     -webkit-animation-duration:0.3s;
     animation-duration:0.3s;
@@ -24,3 +24,41 @@
     max-width: 200px;
     height: auto;
   }
+
+  .w100{
+    width: 100px;
+  }
+
+  .w140{
+    width: 140px;
+  }
+
+  .avatar{
+    width: 30px;
+    border-radius: 100%;
+  }
+
+  /* Fondo del modal */
+  .oculto-modal{
+    display: none;
+  }
+  
+  .fondo-modal-imagen{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    height: 100%;
+    z-index: 9999;
+  }
+
+  .ng-select.custom {
+    border:0px;
+    min-height: 0px;
+    border-radius: 0;
+}
+.ng-select.custom .ng-select-container  {            
+    min-height: 0px;
+    border-radius: 0;
+}

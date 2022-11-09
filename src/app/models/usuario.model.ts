@@ -14,13 +14,13 @@ export class Usuario{
     ){}
 
     get imageUrl(){
-
-        //Valido que si incluye https quiere decir que es de google
-        if(this.img?.includes('https')){
+        if(!this.img){
+            return `${base_url}/upload/usuarios/no-image`;
+        }else if(this.img?.includes('https')){
+            //Valido que si incluye https quiere decir que es de google
             return this.img;
-        }
-        // /upload/usuarios/no-image
-        if(this.img){
+        }else if(this.img){
+            // /upload/usuarios/no-image
             return `${base_url}/upload/usuarios/${this.img}`;
         }else{
             return `${base_url}/upload/usuarios/no-image`;

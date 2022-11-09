@@ -33,16 +33,16 @@ export class PerfilComponent implements OnInit {
 
   actualizarPerfil(){
     
-          swal.fire({
-            title: 'Accion?',
-            text: "Desea realizar los cambios!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar!',
-            cancelButtonText:'Cancelar'
-          }).then((result) => {
+    swal.fire({
+      title: 'Accion?',
+      text: "Desea realizar los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar!',
+      cancelButtonText:'Cancelar'
+    }).then((result) => {
             this.usuarioService.actualizarPerfil(this.perfilForm.value)
                 .subscribe((resp:any) => {
                 if (result.isConfirmed) {
@@ -58,9 +58,7 @@ export class PerfilComponent implements OnInit {
                   )
             }
           },
-          (err) => {
-            swal.fire('Error',err.error.msg,'error');
-          }
+          (err) => {swal.fire('Error',err.error.msg,'error');}
           )
 
         }

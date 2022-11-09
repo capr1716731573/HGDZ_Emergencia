@@ -14,8 +14,15 @@ import { CustomComponentsModule } from '../custom-components/custom-components.m
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { MedicoIdComponent } from './medicos/medico-id.component';
 
+import { NgSelectModule } from '@ng-select/ng-select';
 
+import { Select2Module } from 'ng-select2-component';
 
 
 @NgModule({
@@ -27,6 +34,10 @@ import { PerfilComponent } from './perfil/perfil.component';
     PromesasComponent,
     RxjsComponent,
     PerfilComponent,
+    UsuariosComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoIdComponent,
   ],
   imports: [
     CommonModule,  
@@ -34,7 +45,10 @@ import { PerfilComponent } from './perfil/perfil.component';
     SharedModule,//modulo de los header sidebar breadcrumbs
     RouterModule,//si la pagina o main lleva un router outlet se debe colocar este modulo
     CustomComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule,
+    NgSelectModule,
+    Select2Module,
     
   ],
   exports:[

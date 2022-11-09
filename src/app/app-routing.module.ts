@@ -11,7 +11,7 @@ const routes:Routes=[
   //path: '/dashboard' MainPagesRouting
   //patj: '/auth' AuthRouting
   
-  //{ path: '', redirectTo:'/dashboard', pathMatch:'full' },   
+  { path: '', redirectTo:'/dashboard', pathMatch:'full' },   
   { path: '**', component: NopagefoundComponent },
 
 ]
@@ -22,7 +22,7 @@ const routes:Routes=[
     
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{ useHash:true }),
     MainPagesRoutingModule,
     AuthRoutingModule
   ],
