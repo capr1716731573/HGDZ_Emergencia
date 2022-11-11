@@ -12,6 +12,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoIdComponent } from './medicos/medico-id.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes:Routes=[
     {
@@ -21,6 +23,7 @@ const routes:Routes=[
       children:[
         //Primera Seccion
         { path: 'dashboard', component: DashboardComponent, data:{ titulo:'Dashboard' } },
+        { path: 'buscar/:termino', component: BusquedaComponent, data:{ titulo:'Búsquedas' } },
         { path: 'progress', component: ProgressComponent, data:{ titulo:'Progress Bar' } },
         { path: 'grafica', component: Grafica1Component, data:{ titulo:'Gráficos' } },
         { path: 'promesas', component: PromesasComponent, data:{ titulo:'Promesas' } },
@@ -28,11 +31,11 @@ const routes:Routes=[
         { path: 'perfil', component: PerfilComponent, data:{ titulo:'Perfil Usuario' } },
 
         //Segunda Seccion
-        { path: 'usuarios', component: UsuariosComponent, data:{ titulo:'Usuarios' } },
         { path: 'hospitales', component: HospitalesComponent, data:{ titulo:'Hospitales' } },
         { path: 'medicos', component: MedicosComponent, data:{ titulo:'Medicos' } },
         { path: 'medicos/:id', component: MedicoIdComponent, data:{ titulo:'Medicos' } },
-
+        
+        { path: 'usuarios', canActivate:[AdminGuard] ,component: UsuariosComponent, data:{ titulo:'Usuarios' } },
         //Default
         { path:'', redirectTo:'/dashboard', pathMatch:'full' }
       ]

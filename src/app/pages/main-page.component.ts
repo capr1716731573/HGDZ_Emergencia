@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared/shared.service';
+import { SidebarService } from '../shared/sidebar/sidebar.service';
 
 
 @Component({
@@ -10,10 +11,11 @@ import { SharedService } from '../shared/shared.service';
 })
 export class MainPageComponent implements OnInit {
   
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService,
+              public sidebarService:SidebarService) { }
 
   ngOnInit(): void {
-    
+    this.sidebarService.cargarMenu();
   }
 
 }

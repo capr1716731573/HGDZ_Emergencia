@@ -34,12 +34,21 @@ export class UsuarioService {
     }
   }
 
+  getRole(){
+    return this.usuario.role;
+  }
+
+  guardarLocalStorage(token:string, menu:any){
+    localStorage.setItem('token',token);
+    localStorage.setItem('menu',JSON.stringify(menu));
+  }
+
   crearUsuario(formData:RegisterForm){
     return this.http.post(`${baseUrl}/usuarios`,formData)
               .pipe(
                 tap((resp:any) =>{
                   //Aqui concateno en el observable y ejecuto guardar el token en el localstorage
-                  localStorage.setItem('token',resp.token);
+                  this.guardarLocalStorage(resp.token,resp.menu);
                 })
               )
   }
@@ -49,7 +58,7 @@ export class UsuarioService {
               .pipe(
                 tap((resp:any) =>{
                   //Aqui concateno en el observable y ejecuto guardar el token en el localstorage
-                  localStorage.setItem('token',resp.token);
+                  this.guardarLocalStorage(resp.token,resp.menu);
                 })
               )
   }
@@ -66,7 +75,7 @@ export class UsuarioService {
         const {email,google,nombre,role,uid,img=''}=resp.usuario;
         this.usuario=new Usuario(nombre,email,'',img,google,role,uid);
         //guardo nueva version del token
-        localStorage.setItem('token',resp.token);
+        this.guardarLocalStorage(resp.token,resp.menu);
         return true;
       }),
       catchError(error => of(false))
@@ -75,6 +84,7 @@ export class UsuarioService {
 
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
     this.router.navigateByUrl('/login');
   }
 

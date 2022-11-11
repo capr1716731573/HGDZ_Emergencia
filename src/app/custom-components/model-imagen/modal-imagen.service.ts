@@ -10,7 +10,7 @@ export class ModalImagenService {
   private _ocultarModal:boolean=true;
   public tipo:string='';
   public id:string='';
-  public img:string='/uploads/no-img.png';
+  public img:string=`${base_url}/uploads/usuarios/no-img.png`;
 
   public nuevaImagen:EventEmitter<any>=new EventEmitter<any>();
 

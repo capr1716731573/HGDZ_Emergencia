@@ -25,6 +25,14 @@
     height: auto;
   }
 
+  .enlace {
+    color: #398bf7;
+  }
+
+  .w75{
+    width: 75px;
+  }
+
   .w100{
     width: 100px;
   }

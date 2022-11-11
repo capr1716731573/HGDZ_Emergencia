@@ -23,6 +23,7 @@ import { MedicoIdComponent } from './medicos/medico-id.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { Select2Module } from 'ng-select2-component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { Select2Module } from 'ng-select2-component';
     HospitalesComponent,
     MedicosComponent,
     MedicoIdComponent,
+    BusquedaComponent,
   ],
   imports: [
     CommonModule,  
