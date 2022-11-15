@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { tap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { UsuarioService } from '../auth/usuario.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(private usuarioService:UsuarioService,
               private router:Router){
 
+  }
+  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+      
+    //valido el token' da true o false
+    //Si tiene token valido carga los modulos de manera peresoza
+      return this.usuarioService.validarToken()
+      .pipe(
+        tap(estaAutenticado => {
+          if(!estaAutenticado){
+            //lo retorno al login si da false o no esta autenticado
+            this.router.navigateByUrl('/login');
+          }
+        })
+      )
   }
 
 

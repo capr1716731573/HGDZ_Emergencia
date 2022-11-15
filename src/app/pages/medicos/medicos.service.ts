@@ -28,7 +28,7 @@ export class MedicosService {
 
   cargarMedicos(desde:number=0){
     const url=`${baseUrl}/medicos`;
-    return this.http.get(url,this.getHeader())
+    return this.http.get(url)
               .pipe(
                 map((resp:any) => resp.medicos)
               )
@@ -49,24 +49,24 @@ export class MedicosService {
   obtenerMedicoXID2(id:string){
     const url=`${baseUrl}/medicos/${id}`;
     return this.http
-          .get(url,this.getHeader())
-          .pipe(retry(1),catchError(this.handleError));
+          .get(url)
+          .pipe(retry(1));
              
   }
 
   crearMedico(medico:{nombre:string, hospital:string}){
     const url=`${baseUrl}/medicos`;
-    return this.http.post(url,medico,this.getHeader())
+    return this.http.post(url,medico)
   }
 
   actualizarMedico(medico:Medico){
     const url=`${baseUrl}/medicos/${medico._id}`;
-    return this.http.put(url,medico,this.getHeader())
+    return this.http.put(url,medico)
   }
 
   borrarMedico(id:string){
     const url=`${baseUrl}/medicos/${id}`;
-    return this.http.delete(url,this.getHeader())
+    return this.http.delete(url)
   }
 
 

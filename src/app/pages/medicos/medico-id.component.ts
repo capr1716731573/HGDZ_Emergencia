@@ -104,7 +104,7 @@ export class MedicoIdComponent implements OnInit {
         this.medicoService.crearMedico( this.medicoForm.value )
             .subscribe( (resp: any) => {
               Swal.fire('Creado', `${ nombre } creado correctamente`, 'success');
-              this.router.navigateByUrl(`/dashboard/medico/${ resp.medico._id }`)
+              this.router.navigateByUrl(`/medicos/${ resp.medico._id }`)
           })
       }
   
@@ -112,4 +112,5 @@ export class MedicoIdComponent implements OnInit {
   
     }
   
+   
   }
