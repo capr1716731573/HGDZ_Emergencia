@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ChartData, ChartType, Color } from 'chart.js';
+//import { ChartData, ChartType, Color } from 'chart.js';
 
 
 
@@ -35,7 +35,7 @@ export class DonaComponent implements OnChanges{
 
 
 
- public doughnutChartType: ChartType = 'doughnut';
+ //public doughnutChartType: ChartType = 'doughnut';
 
 
 }

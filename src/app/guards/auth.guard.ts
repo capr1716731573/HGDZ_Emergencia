@@ -6,7 +6,7 @@ import { UsuarioService } from '../auth/usuario.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class AuthGuard implements CanActivate {
 
   constructor(private usuarioService:UsuarioService,
               private router:Router){
@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       
     //valido el token' da true o false
     //Si tiene token valido carga los modulos de manera peresoza
+    console.log("PROBLEMA DE CANLOAD");
       return this.usuarioService.validarToken()
       .pipe(
         tap(estaAutenticado => {
@@ -33,6 +34,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     state: RouterStateSnapshot){
       
     //valido el token' da true o false
+    console.log("PROBLEMA DE CANACTIVATE");
     return this.usuarioService.validarToken()
               .pipe(
                 tap(estaAutenticado => {

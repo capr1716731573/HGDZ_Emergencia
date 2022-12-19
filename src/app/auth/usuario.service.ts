@@ -65,6 +65,7 @@ export class UsuarioService {
 
   validarToken(){
     //Valida el token 
+    
     return this.http.get(`${baseUrl}/login/renew`,{
       headers:{
         'x-token':this.getToken()

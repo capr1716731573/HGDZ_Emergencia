@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -20,11 +21,8 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { MedicoIdComponent } from './medicos/medico-id.component';
 
-import { NgSelectModule } from '@ng-select/ng-select';
-
-import { Select2Module } from 'ng-select2-component';
+//import { NgSelectModule } from '@ng-select/ng-select';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
 
 @NgModule({
   declarations: [
@@ -46,11 +44,11 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     FormsModule,
     SharedModule,//modulo de los header sidebar breadcrumbs
     RouterModule,//si la pagina o main lleva un router outlet se debe colocar este modulo
-    CustomComponentsModule,
     ReactiveFormsModule,
     PipesModule,
-    NgSelectModule,
-    Select2Module,
+    CustomComponentsModule,
+    NgbModule
+    //NgbAccordionModule
     
   ],
   exports:[
