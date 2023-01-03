@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
               public sidebarService:SidebarService) { }
 
   ngOnInit(): void {
-    this.sidebarService.cargarMenu();
+    //this.sidebarService.cargarMenu();
   }
 
 }

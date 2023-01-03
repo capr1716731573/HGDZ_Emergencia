@@ -1,3 +1,7 @@
-
-<!-- Aqui rederizo a rutas hijas -->
-<router-outlet></router-outlet>
+<div *ngIf="cargando">
+    <app-loading1></app-loading1>
+</div>
+<div *ngIf="!cargando">
+    <!-- Aqui rederizo a rutas hijas -->
+    <router-outlet></router-outlet>
+</div>

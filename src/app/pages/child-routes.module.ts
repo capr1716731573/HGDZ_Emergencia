@@ -7,30 +7,24 @@ import { ProgressComponent } from './progress/progress.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { HospitalesComponent } from './hospitales/hospitales.component';
-import { MedicosComponent } from './medicos/medicos.component';
-import { MedicoIdComponent } from './medicos/medico-id.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
+import { TriageComponent } from './triage/triage.component';
+import { Form008Component } from './form008/form008.component';
+
 import { AdminGuard } from '../guards/admin.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 const childRoutes:Routes=[
   //Primera Seccion
   { path: 'dashboard', component: DashboardComponent, data:{ titulo:'Dashboard' } },
-  { path: 'buscar/:termino', component: BusquedaComponent, data:{ titulo:'Búsquedas' } },
   { path: 'progress', component: ProgressComponent, data:{ titulo:'Progress Bar' } },
   { path: 'grafica', component: Grafica1Component, data:{ titulo:'Gráficos' } },
   { path: 'promesas', component: PromesasComponent, data:{ titulo:'Promesas' } },
   { path: 'rxjs', component: RxjsComponent, data:{ titulo:'Observables' } },
-  { path: 'perfil', component: PerfilComponent, data:{ titulo:'Perfil Usuario' } },
 
-  //Segunda Seccion
-  { path: 'hospitales', component: HospitalesComponent, data:{ titulo:'Hospitales' } },
-  { path: 'medicos', component: MedicosComponent, data:{ titulo:'Medicos' } },
-  { path: 'medicos/:id', component: MedicoIdComponent, data:{ titulo:'Medicos' } },
-  
-  { path: 'usuarios', canActivate:[AdminGuard] ,component: UsuariosComponent, data:{ titulo:'Usuarios' } },
+  //**** Emergencia **************/
+  { path: 'triage', component: TriageComponent, data:{ titulo:'Triage' } },
+  { path: 'form008', component: Form008Component, data:{ titulo:'HCU-form.008' } },
+
   //Default
   { path:'', redirectTo:'/dashboard', pathMatch:'full' }
 ]

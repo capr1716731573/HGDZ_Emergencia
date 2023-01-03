@@ -7,7 +7,17 @@
     animation-fill-mode:both
 }
 
+/***** CODIGO MODAL****/
+/* Este codigo sirve para cambiar la clase y utilizar modal bien de NG BOOTSTRAP
+utilizando libreria de bootstrap 4 en el tempalte y bootstrap 5 en los componentes de NgBoostrap*/
+ngb-modal-backdrop {
+  z-index: 999 !important;
 
+}
+ngb-modal-window{
+  z-index: 999 !important;
+}
+/******************************************/
 #themecolors .selector, .cursor{
     cursor: pointer
 }

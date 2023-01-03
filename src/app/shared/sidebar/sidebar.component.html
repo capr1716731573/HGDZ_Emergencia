@@ -8,32 +8,40 @@
     <nav class="sidebar-nav">
         <ul id="sidebarnav">
             <li class="user-profile">
-                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img [src]="usuario.imageUrl" alt="user" /><span class="hide-menu">{{usuario.nombre}} </span></a>
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="./assets/images/users/4.jpg" alt="user" /><span class="hide-menu">{{usuario.usuario_apellido_nombre}} </span></a>
                 <ul aria-expanded="false" class="collapse">
                     <li><a routerLink="/perfil">My Profile </a></li>
-                    <li><a href="javascript:void()">My Balance</a></li>
-                    <li><a href="javascript:void()">Inbox</a></li>
-                    <li><a href="javascript:void()">Account Setting</a></li>
+                    <li><a>My Balance</a></li>
+                    <li><a>Inbox</a></li>
+                    <li><a>Account Setting</a></li>
                     <li><a routerLink="/login">Logout</a></li>
                 </ul>
             </li>
             <li class="nav-devider"></li>
-            <li class="nav-small-cap">PERSONAL</li>
+            <li class="nav-small-cap">EMERGENCIA</li>
             <li *ngFor="let item of sideBarService.menu"> 
                 <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                    <i [class]="item.icono"></i>
-                    <span class="hide-menu">{{item.titulo}} 
-                        <span class="label label-rouded label-themecolor pull-right">{{item.submenu.length}}</span>
+                    <i [class]="item.mnu_logo != null && item.mnu_logo != '' ? item.mnu_logo : 'fa fa-dot-circle-o'"></i>
+                    
+                    <span class="hide-menu size_font_menu">
+                        {{item.mnu_descripcion | slice:0:16}}
+                        {{item.mnu_descripcion.length > 16 ? '...' : ''}}
+                        <span *ngIf="item.detalle_sub_menu != null" class="label label-rouded label-themecolor pull-right">{{item.detalle_sub_menu.length}}</span>
+                        <span *ngIf="item.detalle_sub_menu == null" class="label label-rouded label-themecolor pull-right">0</span>
                     </span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
-                    <li *ngFor="let subitem of item.submenu">
-                        <a  [routerLink]="subitem.url"
-                            routerLinkActive="active"
-                            [routerLinkActiveOptions]="{ exact: true}">
-                            {{subitem.titulo}}
-                        </a>
-                    </li>
+                    <div *ngIf="item.detalle_sub_menu != null">
+                        <li *ngFor="let subitem of item.detalle_sub_menu">
+                            <a  
+                                [routerLink]="subitem.mnu_state"
+                                routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true}">
+                                <div class="size_font_menu">{{subitem.mnu_descripcion}}
+                                </div>
+                            </a>                       
+                        </li>
+                    </div>
                 </ul>
             </li>
             

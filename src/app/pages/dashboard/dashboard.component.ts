@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,11 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 export class DashboardComponent implements OnInit {
   closeResult = '';
   modalsNumber = 0;
-  constructor(private modalService: NgbModal,) {
+  options: NgbModalOptions = {
+	backdropClass: '.app-session-modal-backdrop',
+	windowClass: '.app-session-modal-window'
+  };
+  constructor(private modalService: NgbModal) {
 	this.modalService.activeInstances.subscribe((list) => {
 		this.modalsNumber = list.length;
 	});

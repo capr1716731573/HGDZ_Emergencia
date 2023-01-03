@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/auth/usuario.service';
-import { Usuario } from 'src/app/models/usuario.model';
+import { GlobalService } from 'src/app/services/global.service';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -11,14 +11,20 @@ import { SidebarService } from './sidebar.service';
 })
 export class SidebarComponent implements OnInit {
 
-  public usuario!:Usuario;
+  public usuario!:any;
+  public menu:any[]=[];
+  imagenUsuario:string='./assets/images/users/4.jpg';
 
   constructor(public sideBarService:SidebarService,
-              private usuarioService:UsuarioService) { 
-    this.usuario=this.usuarioService.usuario;
+              public globalService:GlobalService) { 
+    this.usuario=this.globalService.sghUser();
+    this.sideBarService.cargarMenu();
+    console.log("desde sidebar :" ,this.sideBarService.menu);
+
   }
 
   ngOnInit(): void {
+    
   }
 
 }

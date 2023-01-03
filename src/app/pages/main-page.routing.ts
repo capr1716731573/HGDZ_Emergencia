@@ -8,7 +8,7 @@ const routes:Routes=[
     {
       path:'', 
       component: MainPageComponent,
-      canActivate:[AuthGuard],
+      //canActivate:[AuthGuard],
       //canLoad:[AuthGuard],
       //Carga las rutas de manera peresoza ya no cuando ejecuta la aplicacion sino 
       //cuando tiene el token recien carga los modulos

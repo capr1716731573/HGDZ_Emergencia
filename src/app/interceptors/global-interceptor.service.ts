@@ -7,11 +7,20 @@ import swal from 'sweetalert2'
   providedIn: 'root'
 })
 export class GlobalInterceptorService implements HttpInterceptor {
+  //Consulto a localstorage de otro sistema de admisiones
+  sgh_user_cache:any={};
 
-  constructor() { }
+  constructor() {
 
+   }
+
+  sghUser():any{
+    this.sgh_user_cache=localStorage.getItem('sgh_user');
+    this.sgh_user_cache=JSON.parse(this.sgh_user_cache);
+    return this.sgh_user_cache;
+  }
   getToken(){
-    return localStorage.getItem('token') || '';
+    return this.sghUser().token || '';
   }
 
 
@@ -19,7 +28,7 @@ export class GlobalInterceptorService implements HttpInterceptor {
 
     //Crea el token para todas las peticiones HTTP
     const headers= new HttpHeaders({
-      'x-token':this.getToken()
+      'token':this.getToken()
     })
 
     //Coloco los headers en la request

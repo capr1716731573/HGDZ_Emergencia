@@ -23,6 +23,9 @@
     "@ng-select/ng-select": "^10.0.1",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.2",
+    "crypto-js": "^4.1.1",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.15",
     "tslib": "^2.3.0",
@@ -33,13 +36,16 @@
       "@angular/common": "^13.0.0 || ^14.0.0",
       "@angular/core": "^13.0.0 || ^14.0.0",
       "@angular/forms": "^13.0.0 || ^14.0.0",
-      "@angular/localize": "^13.0.0 || ^14.0.0"
+      "@angular/localize": "^13.0.0 || ^14.0.0",
+      "bootstrap": "^5.2.2",
+      "@popperjs/core": "^2.10.2"
     }
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.2",
     "@angular/cli": "~14.2.2",
     "@angular/compiler-cli": "^14.2.0",
+    "@types/crypto-js": "^4.1.1",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",

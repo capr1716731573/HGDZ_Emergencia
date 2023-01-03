@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, delay, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Usuario } from '../models/usuario.model';
 import { RegisterForm } from './register/register-interface';
 
 const baseUrl= environment.base_url
@@ -13,7 +12,7 @@ const baseUrl= environment.base_url
 })
 export class UsuarioService {
 
-  public usuario!:Usuario;
+  public usuario!:any;
 
   constructor(private http:HttpClient,
               private router:Router) { }
@@ -58,7 +57,8 @@ export class UsuarioService {
               .pipe(
                 tap((resp:any) =>{
                   //Aqui concateno en el observable y ejecuto guardar el token en el localstorage
-                  this.guardarLocalStorage(resp.token,resp.menu);
+                  
+                  //this.guardarLocalStorage(resp.token,resp.menu);
                 })
               )
   }
@@ -74,7 +74,7 @@ export class UsuarioService {
       map((resp:any) =>{
         //cargo informacion del usuario
         const {email,google,nombre,role,uid,img=''}=resp.usuario;
-        this.usuario=new Usuario(nombre,email,'',img,google,role,uid);
+        //this.usuario=new Usuario(nombre,email,'',img,google,role,uid);
         //guardo nueva version del token
         this.guardarLocalStorage(resp.token,resp.menu);
         return true;
@@ -84,8 +84,9 @@ export class UsuarioService {
   }
 
   logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('menu');
+    localStorage.removeItem('sgh_user');
+    localStorage.removeItem('menu_emergencia');
+    //redireccionar a login principal
     this.router.navigateByUrl('/login');
   }
 
@@ -105,24 +106,24 @@ export class UsuarioService {
             .pipe(
                 //delay(1000), para probar el loading y que se demore la carga
                 map((resp:any) =>{
-                  const usuarios=resp.usuarios.map((user:any) => new Usuario(
+                  /* const usuarios=resp.usuarios.map((user:any) => new Usuario(
                     user.nombre,user.email,'',user.img,user.google,user.role,user.uid
-                  ));
+                  )); */
 
                   return {
                     total:resp.registros,
-                    usuarios
+                    //usuarios
                   }
                 })
             )
   }
 
-  eliminarUsuario(usuario:Usuario){
+  eliminarUsuario(usuario:any){
     const url=`${baseUrl}/usuarios/${usuario.uid}`;
     return this.http.delete(url,this.getHeader());
   }
 
-  actualizarUsuario(usuario:Usuario){
+  actualizarUsuario(usuario:any){
     const url=`${baseUrl}/usuarios/${usuario.uid}`;
     return this.http.put(url,usuario,this.getHeader());
   }

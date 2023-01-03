@@ -14,15 +14,11 @@ import { SharedModule } from '../shared/shared.module';
 import { CustomComponentsModule } from '../custom-components/custom-components.module';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { HospitalesComponent } from './hospitales/hospitales.component';
-import { MedicosComponent } from './medicos/medicos.component';
 import { PipesModule } from '../pipes/pipes.module';
-import { MedicoIdComponent } from './medicos/medico-id.component';
+import { TriageComponent } from './triage/triage.component';
+import { Form008Component } from './form008/form008.component';
 
 //import { NgSelectModule } from '@ng-select/ng-select';
-import { BusquedaComponent } from './busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +28,9 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     MainPageComponent,
     PromesasComponent,
     RxjsComponent,
-    PerfilComponent,
-    UsuariosComponent,
-    HospitalesComponent,
-    MedicosComponent,
-    MedicoIdComponent,
-    BusquedaComponent,
+    TriageComponent,
+    Form008Component,
+   
   ],
   imports: [
     CommonModule,  

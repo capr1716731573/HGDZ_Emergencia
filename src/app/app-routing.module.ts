@@ -22,9 +22,10 @@ const routes:Routes=[
     
   ],
   imports: [
-    RouterModule.forRoot(routes,{ useHash:true }),
+    //RouterModule.forRoot(routes,{ useHash:true }),
+    RouterModule.forRoot(routes),
     MainPagesRoutingModule,
-    AuthRoutingModule
+    //AuthRoutingModule
   ],
   exports:[
     RouterModule

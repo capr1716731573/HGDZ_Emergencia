@@ -1,7 +1,7 @@
 
 
 export interface LoginForm{
-    email:string,
+    user:string,
     password:string,
     remember:boolean
 }

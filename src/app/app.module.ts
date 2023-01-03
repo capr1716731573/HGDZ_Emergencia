@@ -9,26 +9,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { GlobalInterceptorService } from './interceptors/global-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomComponentsModule } from "./custom-components/custom-components.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NopagefoundComponent
-   
-  ],
-  imports: [
-    BrowserModule,
-    MainPageModule,
-    AuthModule,
-    AppRoutingModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: GlobalInterceptorService,
-      multi:true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NopagefoundComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: GlobalInterceptorService,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        MainPageModule,
+        AuthModule,
+        AppRoutingModule,
+        CustomComponentsModule
+    ]
 })
 export class AppModule { }

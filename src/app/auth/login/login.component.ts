@@ -12,10 +12,12 @@ import swal from 'sweetalert2'
   ]
 })
 export class LoginComponent implements OnInit {
+  
+
   public formSubmitted=false;
 
   public loginForm= this.fb.group({
-    email:[localStorage.getItem('email') || '',[Validators.required, Validators.email]],
+    user:[localStorage.getItem('user_salud') || '',[Validators.required]],
     password:['',[Validators.required, Validators.minLength(4)]],
     remember: false
   });
@@ -41,14 +43,14 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
-
+    console.log(this.loginForm.value);
     this.usuarioService.login(this.loginForm.value)
         .subscribe(resp =>{
           //Funcion RECUERDAME
           const recordar=this.loginForm.get('remember')?.value || false;
-          const email=this.loginForm.get('email')?.value;
-          if(recordar && email != null){
-            localStorage.setItem('email',email);
+          const user=this.loginForm.get('user')?.value;
+          if(recordar && user != null){
+            localStorage.setItem('user_salud',user);
           }
           
           swal.fire({
